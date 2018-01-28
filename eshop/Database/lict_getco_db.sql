@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2018 at 01:07 PM
+-- Generation Time: Jan 28, 2018 at 12:19 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -57,7 +57,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `email`, `Password`, `first_name`, `last_name`, `country`, `role_id`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'xvirus.bd@gmail.com', '123456', 'Mohammad Ali ', 'Khan', '880', 1, 1, '2018-01-25 07:06:53', '0000-00-00 00:00:00');
+(1, 'xvirus.bd@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Mohammad Ali ', 'Khan', '880', 1, 1, '2018-01-28 05:02:28', '0000-00-00 00:00:00'),
+(3, 'test@mail.com', '202cb962ac59075b964b07152d234b70', 'test1', 'test2', 'Bangladesh', 2, 1, '2018-01-28 06:07:25', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -73,7 +74,8 @@ ALTER TABLE `roles`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`userid`);
+  ADD PRIMARY KEY (`userid`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -89,7 +91,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

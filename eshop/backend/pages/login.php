@@ -30,6 +30,73 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <style type="text/css">
+            .err_msg{
+                display: none;
+                color: #f00;
+            }
+        </style>
+
+        <script type="text/javascript">
+            
+            function valid_login() {
+                //return true;
+                var email = $("#email").val();
+            
+                var password = $("#password").val();
+
+
+                if(email =="" || password == "")
+                {
+                    if(email =="")
+                    {
+                     $("#err_email").show();
+                    }
+                    else
+                    {
+                        $("#err_email").hide();
+                    }
+
+                    if(password =="")
+                    {
+                        $("#err_password").show();
+                    
+                    }
+                    else
+                    {
+                        $("#err_password").show();
+                    }
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+                //alert(email);
+            }
+
+            function check_me(id)
+            {
+                //alert(id);
+                var val = $("#"+id).val();
+
+                var errid = "err_"+id;
+
+                if(val == "")
+                {
+                    $("#"+errid).show();
+                    
+                }
+                else
+                {
+                    $("#"+errid).hide();
+                }
+            }
+        </script>
+
 </head>
 
 <body>
@@ -42,13 +109,15 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="">
+                        <form role="form" action="login_action.php" method="post" onsubmit="return valid_login()">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" onkeyup="check_me(this.id)" placeholder="E-mail" name="email" id="email" type="email" autofocus>
+                                     <small id="err_email" class="form-text err_msg">Email is required</small> 
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" onkeyup="check_me(this.id)" placeholder="Password" name="password" id="password" type="password" value="">
+                                    <small id="err_password" class="form-text err_msg">Password is required</small>
                                 </div>
                                 <div class="checkbox">
                                     <label>
