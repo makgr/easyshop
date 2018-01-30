@@ -21,7 +21,7 @@
   <body>
 
     <!-- Navigation -->
-    <?php include 'navbar.php'; ?>
+    <?php include('navbar.php'); ?>
 
     <!-- Page Content -->
     <div class="container">
@@ -180,7 +180,8 @@
     <!-- /.container -->
 
     <!-- Footer -->
-   <?php include 'footer.php'; ?>
+   
+     <?php include('footer.php'); ?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

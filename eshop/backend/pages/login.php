@@ -30,6 +30,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <style type="text/css">
@@ -43,8 +44,9 @@
             
             function valid_login() {
                 //return true;
+
+
                 var email = $("#email").val();
-            
                 var password = $("#password").val();
 
 
@@ -52,7 +54,7 @@
                 {
                     if(email =="")
                     {
-                     $("#err_email").show();
+                        $("#err_email").show();
                     }
                     else
                     {
@@ -62,11 +64,10 @@
                     if(password =="")
                     {
                         $("#err_password").show();
-                    
                     }
                     else
                     {
-                        $("#err_password").show();
+                        $("#err_password").hide();
                     }
                     return false;
                 }
@@ -81,6 +82,7 @@
             function check_me(id)
             {
                 //alert(id);
+
                 var val = $("#"+id).val();
 
                 var errid = "err_"+id;
@@ -109,14 +111,16 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="login_action.php" method="post" onsubmit="return valid_login()">
+                        <form role="form" action="login_action.php" onsubmit="return valid_login()" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" onkeyup="check_me(this.id)" placeholder="E-mail" name="email" id="email" type="email" autofocus>
-                                     <small id="err_email" class="form-text err_msg">Email is required</small> 
+                                    <input class="form-control" placeholder="E-mail" name="email" id="email" type="email" onkeyup="check_me(this.id)"  autofocus>
+
+                                    <small id="err_email" class="form-text err_msg">Email is required</small>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" onkeyup="check_me(this.id)" placeholder="Password" name="password" id="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" id="password" type="password" onkeyup="check_me(this.id)" value="">
+
                                     <small id="err_password" class="form-text err_msg">Password is required</small>
                                 </div>
                                 <div class="checkbox">
@@ -125,10 +129,13 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
+
                                  <div class="form-group">
-                                <button type="submit" class="btn btn-success">Login</button>
-                                <a href="registration.php" class="btn btn-primary"> Create account</a>
-                                
+
+                                    <button class="btn btn-success" type="submit">Login</button>
+                                    
+
+                                    <a href="registration.php" class="btn btn-primary">Create account</a>
                                 </div>
                             </fieldset>
                         </form>

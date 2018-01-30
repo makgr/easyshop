@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2018 at 12:19 PM
+-- Generation Time: Jan 30, 2018 at 12:43 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `catid` int(11) NOT NULL,
+  `category_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`catid`, `category_name`) VALUES
+(7, 'Computer'),
+(6, 'Mobile');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
@@ -42,7 +61,7 @@ CREATE TABLE `roles` (
 CREATE TABLE `users` (
   `userid` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `Password` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
@@ -56,13 +75,20 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userid`, `email`, `Password`, `first_name`, `last_name`, `country`, `role_id`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'xvirus.bd@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Mohammad Ali ', 'Khan', '880', 1, 1, '2018-01-28 05:02:28', '0000-00-00 00:00:00'),
-(3, 'test@mail.com', '202cb962ac59075b964b07152d234b70', 'test1', 'test2', 'Bangladesh', 2, 1, '2018-01-28 06:07:25', '0000-00-00 00:00:00');
+INSERT INTO `users` (`userid`, `email`, `password`, `first_name`, `last_name`, `country`, `role_id`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'test@testmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'test', 'test', '880', 1, 1, '2018-01-28 04:59:56', '0000-00-00 00:00:00'),
+(3, 'test2@testmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Test 2', 'Test 2', '880', 2, 1, '2018-01-28 05:02:19', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`catid`),
+  ADD UNIQUE KEY `category_name` (`category_name`);
 
 --
 -- Indexes for table `roles`
@@ -80,6 +106,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `catid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roles`

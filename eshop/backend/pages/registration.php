@@ -39,36 +39,43 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign Up</h3>
+                        <h3 class="panel-title">Please Signup</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form" action="register_action.php" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" required autofocus>
+                                    <input class="form-control" placeholder="E-mail" id="email" name="email" type="email" required autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
+                                    <input class="form-control" placeholder="Password" id="password" name="password" type="password" value="" required>
                                 </div>
+
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="First name" name="first_name" type="text" value="">
+                                    <input class="form-control" placeholder="First name" id="first_name" name="first_name" type="text" value="">
                                 </div>
+
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Last name" name="last_name" type="text" value="">
+                                    <input class="form-control" placeholder="Last name" id="last_name" name="last_name" type="text" value="">
                                 </div>
-                                 <div class="form-group">
-                                    <select name="country" class="form-control">
+
+                                <div class="form-group">
+                                    
+                                    <select class="form-control" id="country" name="country">
                                         <option value="">Select country</option>
                                         <option value="880">Bangladesh</option>
-                                        <option value="44">USA</option>
+                                        <option value="44">United Kingdom</option>
                                     </select>
                                 </div>
-                               
+                                
                                 <!-- Change this to a button or input when using this as a form -->
-                                
-                                <button type="submit" class="btn btn-success">Register</button><br/>
-                                
-                                
+
+                                 <div class="form-group">
+
+                                    <button class="btn btn-success" type="submit">Register</button>
+                                    
+
+                                </div>
                             </fieldset>
                         </form>
                     </div>

@@ -1,13 +1,22 @@
 <?php 
 session_start();
-if(isset($_SESSION['userid'])){
-    if($_SESSION['user_type'] != 'admin'){
-        header('location: ../../index.php');
+
+if(isset($_SESSION['userid']))
+{
+    if($_SESSION['user_type'] !="Admin")
+    {
+        header('location:../../index.php');
     }
-}else {
-    header('location: ../../index.php');
+
+    //echo $_SESSION['userid'];
+    //echo "<br/>";
+}
+else
+{
+     header('location:../../index.php');
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +29,7 @@ if(isset($_SESSION['userid'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +60,7 @@ if(isset($_SESSION['userid'])){
     <div id="wrapper">
 
         <!-- Navigation -->
-        <?php include 'navbar.php'; ?>
+        <?php include('navbar.php'); ?>
 
         <div id="page-wrapper">
             <div class="row">
