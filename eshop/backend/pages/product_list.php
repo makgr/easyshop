@@ -103,6 +103,18 @@ require('connect.php');
        
     </script>
 
+
+    <style type="text/css">
+        
+        .pro_img{
+            width: 30px;
+            max-width: 30px;/*
+            max-height: 60px;*/
+            height: auto;
+
+        }
+    </style>
+
 </head>
 
 <body>
@@ -127,7 +139,7 @@ require('connect.php');
             
             <div class="row">
 
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Context Classes
@@ -138,7 +150,9 @@ require('connect.php');
 
                                 <?php
 
-                                $sql = "SELECT * FROM products ORDER BY product_name";
+                                $sql = "SELECT products.*, categories.category_name FROM `products` INNER JOIN categories ON products.product_category = categories.catid ORDER BY products.product_name";
+
+
 
                                 $res = mysqli_query($con, $sql);
 
@@ -155,6 +169,8 @@ require('connect.php');
                                         <tr>
                                             <th>#</th>
                                             <th>product name</th>
+                                            <th>category</th>
+                                            <th>image</th>
                                             <th>status</th>
                                             <th>Action</th>
                                         </tr>
@@ -176,7 +192,31 @@ require('connect.php');
                                              <tr class="success">
                                                 <td><?php echo $i; ?></td>
                                                 <td><?php echo $row['product_name']; ?></td>
-                                                <td><?php echo $row['product_status']; ?></td>
+                                                <td><?php echo $row['category_name']; ?></td>
+                                                <td>
+                                                    <img class="pro_img" src="../../<?php echo $row['product_image']; ?>" alt="">
+                                                </td>
+                                                <td>
+                                                    <?php 
+
+                                                if($row['product_status'] ==1)
+                                                {
+                                                    ?>
+                                                    Active
+                                                    
+                                                    <?php
+
+                                                }
+                                                else
+                                                {
+                                                    ?>
+                                                    Pending
+                                                    <?php
+                                                }
+
+                                                 ?>
+
+                                                </td>
                                                 <td>
                                                     <a class="btn btn-primary" href="product_edit.php?pid=<?php echo $row['product_id']; ?>">Edit</a>
                                                     <a class="btn btn-danger" onclick="confirm_product_delete(<?php echo $row['product_id']; ?>)">Delete</a>

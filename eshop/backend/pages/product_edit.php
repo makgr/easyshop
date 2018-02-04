@@ -6,7 +6,7 @@ $product_id = $_REQUEST['pid'];
 
 
 
-$sql = "SELECT * FROM products WHERE product_id = '$product_id'";
+$sql = "SELECT products.*, categories.category_name FROM `products` INNER JOIN categories ON products.product_category = categories.catid  WHERE product_id = '$product_id' ORDER BY products.product_name";
 
 $res = mysqli_query($con, $sql);
 
@@ -45,6 +45,18 @@ $row = mysqli_fetch_assoc($res);
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+    <style type="text/css">
+        
+        .pro_img{
+            width: 30px;
+            max-width: 30px;/*
+            max-height: 60px;*/
+            height: auto;
+
+        }
+    </style>
+
 </head>
 
 <body>
@@ -72,7 +84,7 @@ $row = mysqli_fetch_assoc($res);
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form role="form" action="product_action.php" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="product_id" value="<?php echo $rows['product_id']; ?>">
+                                        <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
                                         <div class="form-group">
                                             <label>Category name</label>
                                             <?php 
@@ -89,13 +101,20 @@ $row = mysqli_fetch_assoc($res);
 
 
                                             <select  class="form-control" name="product_category" id="product_category" >
-                                                <option value="">Select category</option>
+                                                <option value="<?php echo $row['product_category']; ?>"><?php echo $row['category_name']; ?></option>
                                                 <?php 
 
                                                 while ($rows = mysqli_fetch_assoc($res)){
+
+                                                    if($row['product_category'] != $rows['catid'])
+                                                    {
+
+
+
                                                     ?>
                                                         <option value="<?php echo $rows['catid']; ?>"><?php echo $rows['category_name']; ?></option>
                                                     <?php
+                                                      }
                                                     }
 
                                                  ?>
@@ -114,6 +133,7 @@ $row = mysqli_fetch_assoc($res);
                                         <div class="form-group">
                                             <label>Product image</label>
                                             <input class="form-control" type="file" name="product_image">
+                                        <img class="pro_img" src="../../<?php echo $row['product_image']; ?>" alt="">
                                         </div>
                                         <div class="form-group">
                                             <label>Product details</label>
@@ -129,8 +149,28 @@ $row = mysqli_fetch_assoc($res);
                                             
 
                                             <select class="form-control" name="product_status">
-                                                <option value="0">Pending</option>
-                                                <option value="1">Active</option>
+
+                                                <?php 
+
+                                                if($row['product_status'] ==1)
+                                                {
+                                                    ?>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Pending</option>
+                                                    
+                                                    <?php
+
+                                                }
+                                                else
+                                                {
+                                                    ?>
+                                                    <option value="0">Pending</option>
+                                                    <option value="1">Active</option>
+                                                    <?php
+                                                }
+
+                                                 ?>
+                                                
                                             </select>
                                         </div>
                                         

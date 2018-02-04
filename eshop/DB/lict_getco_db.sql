@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2018 at 12:57 PM
+-- Generation Time: Feb 04, 2018 at 12:58 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -68,7 +68,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_image`, `product_details`, `product_category`, `product_stock_in`, `product_status`, `created_at`, `updated_at`) VALUES
-(2, 'Samsung Galaxy s8', '650000.00', 'uploads/galaxy-s8.png', 'Samsung Galaxy s8                                   \r\n\r\n                                            ', 6, 0, 0, '2018-02-01 06:42:31', '2018-02-01 06:42:31');
+(1, 'Samsung Galaxy s9', '650000.00', 'uploads/samsung-galaxy.jpeg', 'Samsung Galaxy s8 3', 6, 22, 1, '2018-02-04 05:50:31', '2018-02-04 05:50:31'),
+(2, 'Hp laptop', '40000.00', 'uploads/hp.jpeg', 'Nice hp laptop', 7, 0, 1, '2018-02-04 06:42:32', '2018-02-04 06:42:32'),
+(3, 'Toys', '1000.00', 'uploads/t1.jpg', 'Wow toys', 8, 22, 1, '2018-02-04 06:45:33', '2018-02-04 06:45:33');
 
 -- --------------------------------------------------------
 
@@ -80,6 +82,16 @@ CREATE TABLE `roles` (
   `role_id` int(11) NOT NULL,
   `role_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES
+(1, 'Admin'),
+(2, 'Accountant'),
+(3, 'Receptionist'),
+(4, 'Visitor');
 
 -- --------------------------------------------------------
 
@@ -152,13 +164,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -28,14 +28,18 @@ require('connect.php');
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["product_image"]["tmp_name"]);
-            if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
+
+          if (file_exists($_FILES["product_image"]["tmp_name"])) {
+               $check = getimagesize($_FILES["product_image"]["tmp_name"]);
+              if($check !== false) {
+                  echo "File is an image - " . $check["mime"] . ".";
+                  $uploadOk = 1;
+              } else {
+                  echo "File is not an image.";
+                  $uploadOk = 0;
+              }
+          }
+           
         }
         // Check if file already exists
         if (file_exists($target_file)) {
@@ -82,7 +86,16 @@ require('connect.php');
        {
           // Update query here
 
-         $sql = "UPDATE `products` SET `product_name`='$product_name',`product_price`='$product_price',`product_image`='$product_image',`product_details`='$product_details',`product_category`='$product_category',`product_stock_in`='$product_stock_in',`product_status`='$product_status' WHERE product_id = '$product_id'";
+        if($product_image !="")
+        {
+          $sql = "UPDATE `products` SET `product_name`='$product_name',`product_price`='$product_price',`product_image`='$product_image',`product_details`='$product_details',`product_category`='$product_category',`product_stock_in`='$product_stock_in',`product_status`='$product_status' WHERE product_id = '$product_id'";
+        }
+        else
+        {
+          $sql = "UPDATE `products` SET `product_name`='$product_name',`product_price`='$product_price',`product_details`='$product_details',`product_category`='$product_category',`product_stock_in`='$product_stock_in',`product_status`='$product_status' WHERE product_id = '$product_id'";
+        }
+
+         
        }
        else
        {
@@ -90,8 +103,12 @@ require('connect.php');
 
        
 
-        $sql = " INSERT INTO `products`(`product_id`, `product_name`, `product_price`, `product_image`, `product_details`, `product_category`, `product_stock_in`, `product_status`) VALUES (NULL,'$product_name','$product_price','$product_image','$product_details','$product_category','$product_list','$product_status')";
+        $sql = " INSERT INTO `products`(`product_id`, `product_name`, `product_price`, `product_image`, `product_details`, `product_category`, `product_stock_in`, `product_status`) VALUES (NULL,'$product_name','$product_price','$product_image','$product_details','$product_category','$product_stock_in','$product_status')";
        }
+
+
+
+       echo $product_image;
        
 
        $res = mysqli_query($con, $sql);
@@ -99,14 +116,14 @@ require('connect.php');
 
        if(!$res)
        {
-          //echo "Not inserted ".mysqli_error($res);
-          header('location:product_add.php');
+          echo "Not inserted ".mysqli_error($res);
+          //header('location:product_add.php');
        }
        else
        {
-         //echo "Inserted ";
+         echo "Inserted ";
 
-          header('location:product_list.php');
+          //header('location:product_list.php');
        }
 
 
