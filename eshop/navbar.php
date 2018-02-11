@@ -23,6 +23,8 @@
              <li class="nav-item">
               <a class="nav-link" href="backend/pages/login.php">Login</a>
             </li>
+
+            <li class="nav-item"><a class="nav-link" href="cart_action.php?a=cart" id="li-cart"><i class="fa fa-shopping-cart"></i> Cart (<?php echo $cart->getTotalItem(); ?>)</a></li>
           </ul>
         </div>
       </div>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2018 at 12:58 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Feb 04, 2018 at 07:16 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -68,9 +68,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_image`, `product_details`, `product_category`, `product_stock_in`, `product_status`, `created_at`, `updated_at`) VALUES
-(1, 'Samsung Galaxy s9', '650000.00', 'uploads/samsung-galaxy.jpeg', 'Samsung Galaxy s8 3', 6, 22, 1, '2018-02-04 05:50:31', '2018-02-04 05:50:31'),
-(2, 'Hp laptop', '40000.00', 'uploads/hp.jpeg', 'Nice hp laptop', 7, 0, 1, '2018-02-04 06:42:32', '2018-02-04 06:42:32'),
-(3, 'Toys', '1000.00', 'uploads/t1.jpg', 'Wow toys', 8, 22, 1, '2018-02-04 06:45:33', '2018-02-04 06:45:33');
+(1, 'Samsung Galaxy s8', '650000.00', 'uploads/samsung-galaxy.jpeg', 'Samsung Galaxy s8 3', 6, 0, 1, '2018-02-04 05:50:31', '2018-02-04 05:50:31');
 
 -- --------------------------------------------------------
 
@@ -164,7 +162,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`
